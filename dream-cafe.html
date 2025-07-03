@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Cafe On Ave U - Hookah Lounge & Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=1200&h=600&fit=crop') center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn-primary {
+            background: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Gallery Section */
+        #gallery {
+            background: #f8f9fa;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .gallery-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item.reverse {
+            direction: rtl;
+        }
+
+        .gallery-item.reverse .gallery-text {
+            direction: ltr;
+        }
+
+        .gallery-text h3 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-text p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .gallery-image {
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        #about {
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .hours-info {
+            background: #e74c3c;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 3rem auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .hours-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Menu Section */
+        #menu {
+            background: #f8f9fa;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .menu-item-name {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .menu-item-price {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .contact-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-card p, .contact-card a {
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .contact-card a:hover {
+            color: #e74c3c;
+        }
+
+        .map-container {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border-radius: 10px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Order Section */
+        #order {
+            background: #f8f9fa;
+        }
+
+        .order-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .order-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .order-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .order-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .order-card p {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+
+        .order-button {
+            background: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .order-button:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .cta-section {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .gallery-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .gallery-item.reverse {
+                direction: ltr;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Dream Cafe</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#order">Order</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dream Cafe On Ave U</h1>
+            <p>Where Extraordinary Experiences Come to Life - Premium Hookah, Delicious Food & Unforgettable Moments</p>
+            <a href="#gallery" class="btn-primary">Explore Our Space</a>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title">Experience Dream Cafe</h2>
+            <p class="section-subtitle">Take a visual journey through our extraordinary space where comfort meets luxury</p>
+            
+            <div class="gallery-grid">
+                <!-- Image 1 - Description Left, Image Right -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-text">
+                        <h3>Luxurious Interior Design</h3>
+                        <p>Step into our carefully crafted space featuring elegant seating arrangements, ambient lighting, and modern decor. Every corner of Dream Cafe has been designed to create the perfect atmosphere for relaxation and socialization with friends.</p>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&h=300&fit=crop&crop=center" alt="Dream Cafe luxury interior with comfortable seating and ambient lighting" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Image 2 - Image Left, Description Right -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=500&h=300&fit=crop&crop=center" alt="Premium hookah setup with exotic flavors and traditional preparation" loading="lazy">
+                    </div>
+                    <div class="gallery-text">
+                        <h3>Premium Hookah Experience</h3>
+                        <p>Enjoy our extensive selection of handpicked hookah flavors from around the world. Our experienced staff prepares each hookah with precision, ensuring the perfect smoking experience with smooth, flavorful clouds every time.</p>
+                    </div>
+                </div>
+
+                <!-- Image 3 - Description Left, Image Right -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-text">
+                        <h3>Cozy Outdoor Seating</h3>
+                        <p>Relax in our inviting outdoor seating area, perfect for those beautiful Brooklyn evenings. Enjoy your hookah and conversation under the stars while taking in the vibrant atmosphere of Avenue U.</p>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop&crop=center" alt="Cozy outdoor seating area with string lights and comfortable patio furniture" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Image 4 - Image Left, Description Right -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500&h=300&fit=crop&crop=center" alt="Delicious Middle Eastern food platter with mezze and traditional dishes" loading="lazy">
+                    </div>
+                    <div class="gallery-text">
+                        <h3>Delicious Food & Beverages</h3>
+                        <p>Complement your hookah experience with our selection of authentic Middle Eastern cuisine, fresh beverages, and traditional teas. From mezze platters to sweet baklava, every dish is prepared with care and authentic flavors.</p>
+                    </div>
+                </div>
+
+                <!-- Image 5 - Description Left, Image Right -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-text">
+                        <h3>Social Atmosphere</h3>
+                        <p>Dream Cafe is the perfect place to connect with friends, meet new people, and enjoy meaningful conversations. Our welcoming environment encourages relaxation and creates lasting memories in the heart of Brooklyn.</p>
+                    </div>
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=300&fit=crop&crop=center" alt="Friends socializing and enjoying hookah together in a comfortable lounge setting" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- Image 6 - Image Left, Description Right -->
+                <div class="gallery-item fade-in">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop&crop=center" alt="Evening atmosphere at Dream Cafe with soft lighting and vibrant Brooklyn neighborhood" loading="lazy">
+                    </div>
+                    <div class="gallery-text">
+                        <h3>Brooklyn's Premier Destination</h3>
+                        <p>Located in the heart of Gravesend on Avenue U, Dream Cafe has become Brooklyn's go-to destination for hookah enthusiasts and food lovers. Experience the magic that makes us special every evening.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Dream Cafe</h2>
+            <p class="section-subtitle">Welcome to Dream Cafe On Ave U, where an extraordinary experience awaits you. Step into a world of relaxation, indulgence, and socialization, where the aromatic flavors of hookah blend seamlessly with a captivating ambiance.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌙</div>
+                    <h3>Unmatched Atmosphere</h3>
+                    <p>From soft lighting to comfortable seating arrangements, every detail has been designed to ensure your utmost comfort and create the perfect ambiance for relaxation.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Extensive Flavor Selection</h3>
+                    <p>Delight your senses with our vast array of hookah flavors, handpicked from around the world to provide you with an exceptional smoking experience.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🍽️</div>
+                    <h3>Restaurant & Lounge</h3>
+                    <p>Enjoy delicious food and beverages in our restaurant while experiencing the social atmosphere of our premium hookah lounge.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📶</div>
+                    <h3>Modern Amenities</h3>
+                    <p>Free Wi-Fi, outdoor seating, happy hour specials, and we accept all major credit cards for your convenience.</p>
+                </div>
+            </div>
+
+            <div class="hours-info">
+                <h3>Hours of Operation</h3>
+                <div class="hours-list">
+                    <p><strong>Monday - Thursday:</strong> 4:00 PM - 12:00 AM</p>
+                    <p><strong>Friday - Saturday:</strong> 4:00 PM - 2:00 AM</p>
+                    <p><strong>Sunday:</strong> 4:00 PM - 12:00 AM</p>
+                    <p style="margin-top: 1rem;"><em>Come unwind after a long day!</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            <p class="section-subtitle">Indulge in our carefully curated selection of hookah flavors and delicious food offerings</p>
+            
+            <div class="menu-grid">
+                <div class="menu-category fade-in">
+                    <h3>🌿 Premium Hookah Flavors</h3>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Double Apple</span>
+                        <span class="menu-item-price">$20</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Mint</span>
+                        <span class="menu-item-price">$20</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Blueberry</span>
+                        <span class="menu-item-price">$22</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Watermelon</span>
+                        <span class="menu-item-price">$22</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Mixed Fruit</span>
+                        <span class="menu-item-price">$25</span>
+                    </div>
+                </div>
+                
+                <div class="menu-category fade-in">
+                    <h3>🍹 Beverages</h3>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Turkish Tea</span>
+                        <span class="menu-item-price">$4</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Arabic Coffee</span>
+                        <span class="menu-item-price">$5</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Fresh Juices</span>
+                        <span class="menu-item-price">$6</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Soft Drinks</span>
+                        <span class="menu-item-price">$3</span>
+                    </div>
+                </div>
+                
+                <div class="menu-category fade-in">
+                    <h3>🍽️ Light Bites</h3>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Mezze Platter</span>
+                        <span class="menu-item-price">$15</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Baklava</span>
+                        <span class="menu-item-price">$6</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Mixed Nuts</span>
+                        <span class="menu-item-price">$8</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="menu-item-name">Fresh Fruit Bowl</span>
+                        <span class="menu-item-price">$10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Visit us for an unforgettable experience or get in touch for reservations and inquiries</p>
+            
+            <div class="contact-info">
+                <div class="contact-card fade-in">
+                    <h3>📍 Location</h3>
+                    <p>62 Avenue U<br>Brooklyn, NY 11223<br>Gravesend Neighborhood</p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <h3>📞 Phone</h3>
+                    <p><a href="tel:+1234567890">(123) 456-7890</a></p>
+                    <p><em>Call for reservations</em></p>
+                </div>
+                
+                <div class="contact-card fade-in">
+                    <h3>🌐 Connect</h3>
+                    <p>Free Wi-Fi Available</p>
+                    <p>Follow us on social media<br>for updates and specials!</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">Find Us Here</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d755.3830985632987!2d-73.98205929999999!3d40.5960157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2459d662eca5f%3A0xfaeff90ba1b9c6c1!2sDream%20Cafe%20On%20Ave%20U!5e0!3m2!1sen!2sus!4v1719508800000!5m2!1sen!2sus"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order">
+        <div class="container">
+            <h2 class="section-title">Order & Reservations</h2>
+            <p class="section-subtitle">Experience Dream Cafe in the way that works best for you</p>
+            
+            <div class="order-options">
+                <div class="order-card fade-in">
+                    <h3>🏢 Dine-In Experience</h3>
+                    <p>Join us for the full Dream Cafe experience with hookah, food, and our amazing atmosphere.</p>
+                    <a href="tel:+1234567890" class="order-button">Make Reservation</a>
+                </div>
+                
+                <div class="order-card fade-in">
+                    <h3>🚚 Takeout</h3>
+                    <p>Order our delicious food and beverages for pickup. Perfect for enjoying at home!</p>
+                    <a href="tel:+1234567890" class="order-button">Order Takeout</a>
+                </div>
+                
+                <div class="order-card fade-in">
+                    <h3>🎉 Private Events</h3>
+                    <p>Host your special occasion with us. We offer group packages and private space options.</p>
+                    <a href="tel:+1234567890" class="order-button">Book Event</a>
+                </div>
+                
+                <div class="order-card fade-in">
+                    <h3>⏰ Happy Hour</h3>
+                    <p>Join us for special deals and promotions during our happy hour times!</p>
+                    <a href="#contact" class="order-button">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3>Ready to Dream?</h3>
+                <p>Call us now to reserve your spot or ask about our current specials!</p>
+                <a href="tel:+1234567890" class="btn-primary">Call Now: (123) 456-7890</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Dream Cafe On Ave U. All rights reserved. | Brooklyn's Premier Hookah Lounge & Restaurant</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '#2c3e50';
+                if (link.getAttribute('href') === '#' + current) {
+                    link.style.color = '#e74c3c';
+                }
+            });
+        });
+
+        // Mobile menu toggle (if needed)
+        const navToggle = document.createElement('button');
+        navToggle.innerHTML = '☰';
+        navToggle.style.cssText = `
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #2c3e50;
+            cursor: pointer;
+        `;
+
+        // Add mobile responsiveness
+        function checkMobile() {
+            const nav = document.querySelector('nav ul');
+            const navContainer = document.querySelector('nav .container');
+            
+            if (window.innerWidth <= 768) {
+                navToggle.style.display = 'block';
+                if (!navContainer.contains(navToggle)) {
+                    navContainer.appendChild(navToggle);
+                }
+            } else {
+                navToggle.style.display = 'none';
+                nav.style.display = 'flex';
+            }
+        }
+
+        navToggle.addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+        });
+
+        window.addEventListener('resize', checkMobile);
+        checkMobile();
+    </script>
+</body>
+</html>
